@@ -1,3 +1,4 @@
+![NLR Logo](../../NLR_logo.png)
 # 1 — Installing SDOM (Step-by-Step Tutorial)
 
 This tutorial walks you through installing the **Storage Deployment Optimization
