@@ -6,7 +6,7 @@ documentation:
 
 - SDOM Documentation home: <https://natlabrockies.github.io/SDOM/index.html>
 - Developer / environment setup guide: <https://natlabrockies.github.io/SDOM/sdom_Developers_guide.html>
-- SDOM GitHub repository: <https://github.com/Omar0902/SDOM>
+- SDOM GitHub repository: <https://github.com/NatLabRockies/SDOM>
 
 > SDOM is an open-source, Python/Pyomo-based, high-resolution capacity-expansion
 > framework developed by the National Lab of the Rockies (NLR). See the
@@ -141,22 +141,7 @@ uv pip install sdom
 
 ---
 
-## 7. Install a solver (CBC / HiGHS)
-
-SDOM is a Pyomo model and needs an external (or bundled) MILP solver.
-
-- **HiGHS** is installed automatically as a dependency through the `highspy`
-  Python package — no extra step required.
-- **CBC** (used in many SDOM examples) is provided as a binary inside the
-  `Solver/bin/` directory of the SDOM repo (e.g. `./Solver/bin/cbc.exe`). When
-  installing from source (Option B), that folder is already available.
-- If you used Option A (PyPI), and you want to use CBC, download a CBC binary
-  from <https://github.com/coin-or/Cbc/releases> and remember its path — you
-  will reference it in `get_default_solver_config_dict(executable_path=...)`.
-
----
-
-## 8. Verify the installation
+## 7. Verify the installation
 
 With the virtual environment activated:
 
@@ -168,7 +153,7 @@ You should see a version number printed (no `ImportError`).
 
 ---
 
-## 9. Quick Start example
+## 8. Quick Start example
 
 A minimal SDOM run looks like this (from the [official Quick Start](https://natlabrockies.github.io/SDOM/index.html#installation)):
 
@@ -210,7 +195,7 @@ For details on inputs and outputs, see:
 
 ---
 
-## 10. Troubleshooting
+## 9. Troubleshooting
 
 - **`uv` is not recognized** — Re-open PowerShell after `pip install uv`, or
   check your `PATH`.
@@ -231,7 +216,7 @@ For details on inputs and outputs, see:
 - [SDOM Documentation (home)](https://natlabrockies.github.io/SDOM/index.html)
 - [Installation section](https://natlabrockies.github.io/SDOM/index.html#installation)
 - [Developer / environment setup guide](https://natlabrockies.github.io/SDOM/sdom_Developers_guide.html)
-- [SDOM GitHub repository](https://github.com/Omar0902/SDOM)
+- [SDOM GitHub repository](https://github.com/NatLabRockies/SDOM)
 - [User Guide — Introduction](https://natlabrockies.github.io/SDOM/user_guide/introduction.html)
 - [User Guide — Input Data](https://natlabrockies.github.io/SDOM/user_guide/inputs.html)
 - [User Guide — Running SDOM and Outputs](https://natlabrockies.github.io/SDOM/user_guide/running_and_outputs.html)
