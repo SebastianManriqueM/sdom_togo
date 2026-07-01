@@ -98,8 +98,8 @@ offering the assumptions option).
   )
   data   = load_data(input_data_dir="./data/<scenario>/")
   model  = initialize_model(data, n_hours=8760)
-  solver = get_default_solver_config_dict(solver_name="cbc",
-                                          executable_path="./Solver/bin/cbc.exe")
+  solver = get_default_solver_config_dict(solver_name="highs",
+                                          )
   result = run_solver(model, solver, case_name="<scenario>")
   export_results(result, case="<scenario>", output_dir="./results/")
   ```
