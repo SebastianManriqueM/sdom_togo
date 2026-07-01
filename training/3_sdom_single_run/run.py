@@ -6,6 +6,7 @@ Run from repository root:
 
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 
 from sdom import (
@@ -17,8 +18,10 @@ from sdom import (
 )
 from sdom.analytic_tools import plot_results
 
-N_HOURS = 1440
-CASE_NAME = "training_single_1440"
+N_HOURS = 740
+CASE_NAME = "training_single_740"
+
+logger = logging.getLogger(__name__)
 
 
 def assert_optimal(result) -> None:
@@ -32,9 +35,16 @@ def assert_optimal(result) -> None:
 
 
 def main() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s",
+    )
+
     repo_root = Path(__file__).resolve().parents[2]
+    module_dir = Path(__file__).resolve().parent
     input_dir = repo_root / "data" / "sample_data"
-    output_dir = repo_root / "results" / "training" / "3_sdom_single_run"
+    output_dir = module_dir / "sample_output"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # Core SDOM API docs:
     # https://natlabrockies.github.io/SDOM/api/core.html
@@ -45,7 +55,10 @@ def main() -> None:
     model = initialize_model(data, n_hours=N_HOURS)
 
     # HiGHS avoids external executable paths in training environments.
-    solver_config = get_default_solver_config_dict(solver_name="highs")
+    solver_config = get_default_solver_config_dict(
+        solver_name="highs",
+        stream_solver_output=True,
+    )
 
     result = run_solver(model, solver_config, case_name=CASE_NAME)
     assert_optimal(result)
@@ -58,14 +71,13 @@ def main() -> None:
     # https://natlabrockies.github.io/SDOM/api/analytic_tools.html
     plot_results(result, output_dir=str(output_dir))
 
-    print("Single run completed successfully.")
-    print(f"- solver_status: {result.solver_status}")
-    print(f"- termination_condition: {result.termination_condition}")
-    print(f"- total_cost: {result.total_cost:,.2f}")
+    logger.info("Single run completed successfully.")
+    logger.info("solver_status: %s", result.solver_status)
+    logger.info("termination_condition: %s", result.termination_condition)
+    logger.info("total_cost: %0.2f", result.total_cost)
 
     if hasattr(result, "summary_df") and result.summary_df is not None:
-        print("\nSummary table preview:")
-        print(result.summary_df.head())
+        logger.info("Summary table preview:\n%s", result.summary_df.head().to_string())
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ Run from repository root:
 
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
 
@@ -14,10 +15,12 @@ from sdom import get_default_solver_config_dict, load_data
 from sdom.analytic_tools import plot_parametric_results
 from sdom.parametric import ParametricStudy
 
-N_HOURS = 1440
+N_HOURS = 740
 GENMIX_VALUES = [0.85, 0.95, 1.00]
 STORAGE_P_CAPEX_FACTORS = [0.8, 1.0, 1.2]
 LOAD_SCALE_FACTORS = [0.95, 1.00, 1.05]
+
+logger = logging.getLogger(__name__)
 
 
 def safe_n_cores(n_cases: int) -> int:
@@ -49,12 +52,22 @@ def build_case_summary(study: ParametricStudy, results: list) -> pd.DataFrame:
 
 
 def main() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s | %(levelname)s | %(message)s",
+    )
+
     repo_root = Path(__file__).resolve().parents[2]
+    module_dir = Path(__file__).resolve().parent
     input_dir = repo_root / "data" / "sample_data"
-    output_dir = repo_root / "results" / "training" / "5_sdom_parametric_advanced"
+    output_dir = module_dir / "sample_output"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     data = load_data(input_data_dir=str(input_dir))
-    solver_config = get_default_solver_config_dict(solver_name="highs")
+    solver_config = get_default_solver_config_dict(
+        solver_name="highs",
+        stream_solver_output=True,
+    )
 
     # SDOM parametric study guide:
     # https://natlabrockies.github.io/SDOM/user_guide/parametric_analysis.html
@@ -94,15 +107,14 @@ def main() -> None:
 
     summary_df = build_case_summary(study, results)
     summary_path = output_dir / "advanced_parametric_case_summary.csv"
-    output_dir.mkdir(parents=True, exist_ok=True)
     summary_df.to_csv(summary_path, index=False)
 
     optimal_count = int((summary_df["termination_condition"] == "optimal").sum())
-    print("Advanced parametric study complete.")
-    print(f"- cases_total: {len(summary_df)}")
-    print(f"- expected_cases: {n_cases}")
-    print(f"- cases_optimal: {optimal_count}")
-    print(f"- summary_csv: {summary_path}")
+    logger.info("Advanced parametric study complete.")
+    logger.info("cases_total: %s", len(summary_df))
+    logger.info("expected_cases: %s", n_cases)
+    logger.info("cases_optimal: %s", optimal_count)
+    logger.info("summary_csv: %s", summary_path)
 
 
 if __name__ == "__main__":

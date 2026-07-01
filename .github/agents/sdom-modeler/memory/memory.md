@@ -49,7 +49,9 @@ something that will help future runs.
 
 <!-- Add dated bullets below. Newest on top. -->
 
-- 2026-07-01: Training simulation scripts should use `n_hours=1440` as the default time horizon.
+- 2026-07-01: Top-level README now serves as workshop-facing documentation, including July 2026 Lome BESS context, module summary for `training/`, and formal acknowledgements.
+- 2026-07-01: Training modules should write artifacts to a module-local `sample_output/` folder so outputs are easy to inspect in-place.
+- 2026-07-01: Training simulation scripts should use `n_hours=740` as the default time horizon.
 - 2026-07-01: Training module README files should include the `NLR_logo.png` image at the top, using a repo-root relative path from each module folder.
 - 2026-07-01: Training scripts should include concise explanatory comments and, where relevant, comments linking directly to SDOM documentation pages.
 - 2026-07-01: Training content is being organized as a numbered module series under `training/`, and each module should include a structured README with consistent sections plus (for code modules) a runnable companion script.
