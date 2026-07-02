@@ -49,6 +49,7 @@ something that will help future runs.
 
 <!-- Add dated bullets below. Newest on top. -->
 
+- 2026-07-02: Training README files now include module-specific Python `help()` guidance and copied SDOM docstring excerpts for the public API functions/classes introduced in each module script.
 - 2026-07-02: SDOM `plot_parametric_results` sensitivity stacked-bar PNGs may omit the intended technology legend; issue details and reproduction notes are documented in `references/sdom_parametric_sensitivity_legend_issue.md`.
 - 2026-07-02: Module 5 advanced parametric rerun (`training/5_sdom_parametric_advanced/run_m5.py`) completed 18/18 optimal cases with `N_HOURS = 7*24*2` in 3774.19 seconds, writing summaries and plots under `training/5_sdom_parametric_advanced/sample_output/`.
 - 2026-07-02: Module 4 and 5 scripts now explain the meaning of parametric vectors (`GENMIX_VALUES`, `STORAGE_P_CAPEX_FACTORS`, `LOAD_SCALE_FACTORS`) directly beside the constants.

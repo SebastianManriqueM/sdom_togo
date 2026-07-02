@@ -196,6 +196,126 @@ For details on inputs and outputs, see:
 
 ---
 
+## 9a. Inspect SDOM function help from Python
+
+Python's built-in `help()` function prints the docstring and call signature for
+any imported SDOM function. This is useful when you want to confirm arguments,
+defaults, return values, or expected outputs without leaving the Python session.
+
+From the activated environment, open Python:
+
+```powershell
+python
+```
+
+Then import the functions used in the quick start and call `help()`:
+
+```python
+from sdom import (
+  load_data,
+  initialize_model,
+  get_default_solver_config_dict,
+  run_solver,
+  export_results,
+)
+
+help(load_data)
+help(initialize_model)
+help(get_default_solver_config_dict)
+help(run_solver)
+help(export_results)
+```
+
+You can also run the same checks without entering the interactive prompt:
+
+```powershell
+python -c "from sdom import load_data; help(load_data)"
+python -c "from sdom import initialize_model; help(initialize_model)"
+python -c "from sdom import get_default_solver_config_dict; help(get_default_solver_config_dict)"
+python -c "from sdom import run_solver; help(run_solver)"
+python -c "from sdom import export_results; help(export_results)"
+```
+
+Expected `help()` output excerpts from this environment:
+
+```text
+Help on function load_data in module sdom.io_manager:
+
+load_data(input_data_dir: str = '.\\Data\\')
+  Load all required SDOM input datasets from CSV files in the specified directory.
+
+  Reads and validates all input CSV files needed for SDOM optimization including
+  VRE data, fixed generation profiles, storage characteristics, thermal units,
+  scalars, and formulation specifications. Performs data consistency checks and
+  filters datasets based on completeness.
+```
+
+```text
+Help on function initialize_model in module sdom.optimization_main:
+
+initialize_model(data, n_hours=8760, with_resilience_constraints=False, model_name='SDOM_Model')
+  Initialize a Pyomo SDOM optimization model (dispatcher).
+
+  Parameters
+  ----------
+  data : dict
+    Data dictionary as returned by :func:`sdom.io_manager.load_data`.
+  n_hours : int, optional
+    Number of hours to simulate (default 8760).
+
+  Returns
+  -------
+  pyomo.environ.ConcreteModel
+    A fully initialized Pyomo model ready for optimization, with a
+    ``profiler`` attribute attached.
+```
+
+```text
+Help on function get_default_solver_config_dict in module sdom.optimization_main:
+
+get_default_solver_config_dict(solver_name='cbc', executable_path='.\\Solver\\bin\\cbc.exe', *, mip_gap=0.002, time_limit=None, stream_solver_output=False)
+  Generate a default solver configuration dictionary with standard SDOM settings.
+
+  Parameters
+  ----------
+  solver_name : str, optional
+    Solver to use. Supported values: 'cbc', 'highs', and 'xpress'.
+  mip_gap : float, optional
+    MIP relative optimality gap tolerance. Default is 0.002 (0.2%).
+  stream_solver_output : bool, optional
+    Whether to stream solver native output live to stdout via ``tee``.
+```
+
+```text
+Help on function run_solver in module sdom.optimization_main:
+
+run_solver(model, solver_config_dict: dict, case_name: str = 'run') -> sdom.results.OptimizationResults
+  Solve the optimization model and return structured results.
+
+  Returns
+  -------
+  OptimizationResults
+    A dataclass containing all optimization results including termination
+    condition, total cost, generation dispatch, storage operation, summary
+    metrics, capacity, storage capacity, cost breakdown, and problem info.
+```
+
+```text
+Help on function export_results in module sdom.io_manager:
+
+export_results(results, case: str, output_dir: str = './results_pyomo/')
+  Export optimization results to CSV files.
+
+  Output Files
+  ------------
+  OutputGeneration_{case}.csv
+  OutputStorage_{case}.csv
+  OutputSummary_{case}.csv
+  OutputThermalGeneration_{case}.csv
+```
+
+---
+
 ## 9. Troubleshooting
 
 - **`uv` is not recognized** — Re-open PowerShell after `pip install uv`, or

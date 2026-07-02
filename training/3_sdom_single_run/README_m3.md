@@ -8,7 +8,7 @@ generates default plots, and explores key fields of `OptimizationResults`.
 ## Learning objectives
 
 - Build and solve an SDOM model using the public API.
-- Use `N_HOURS=740` for a practical training horizon in this module.
+- Use `N_HOURS = 7*24*2` (336 hours) for a practical training horizon in this module.
 - Check solve success before post-processing.
 - Export CSV outputs and generate default plots.
 
@@ -20,7 +20,7 @@ generates default plots, and explores key fields of `OptimizationResults`.
 ## Inputs and scenario used
 
 - Scenario folder: `data/sample_data/`
-- Time horizon in this training script: 740 time steps
+- Time horizon in this training script: `N_HOURS = 7*24*2` (336 time steps)
 - Solver: HiGHS (`solver_name="highs"`)
 
 Reference:
@@ -85,6 +85,117 @@ year horizon (`8760` hours).
 ## Full runnable script
 
 See [training/3_sdom_single_run/run_m3.py](run_m3.py).
+
+## Inspect single-run API help from Python
+
+This module introduces the core single-run workflow:
+`load_data -> initialize_model -> get_default_solver_config_dict -> run_solver
+-> export_results`, followed by `plot_results`. Use `help()` to inspect the
+docstrings for the exact function signatures and return values.
+
+Run these commands from the repository root with the virtual environment active:
+
+```powershell
+python -c "from sdom import load_data; help(load_data)"
+python -c "from sdom import initialize_model; help(initialize_model)"
+python -c "from sdom import get_default_solver_config_dict; help(get_default_solver_config_dict)"
+python -c "from sdom import run_solver; help(run_solver)"
+python -c "from sdom import export_results; help(export_results)"
+python -c "from sdom.analytic_tools import plot_results; help(plot_results)"
+```
+
+Expected output excerpts from this environment:
+
+```text
+Help on function initialize_model in module sdom.optimization_main:
+
+initialize_model(data, n_hours=8760, with_resilience_constraints=False, model_name='SDOM_Model')
+   Initialize a Pyomo SDOM optimization model (dispatcher).
+
+   Parameters
+   ----------
+   data : dict
+      Data dictionary as returned by :func:`sdom.io_manager.load_data`.
+   n_hours : int, optional
+      Number of hours to simulate (default 8760).
+
+   Returns
+   -------
+   pyomo.environ.ConcreteModel
+      A fully initialized Pyomo model ready for optimization, with a
+      ``profiler`` attribute attached.
+```
+
+```text
+Help on function get_default_solver_config_dict in module sdom.optimization_main:
+
+get_default_solver_config_dict(solver_name='cbc', executable_path='.\\Solver\\bin\\cbc.exe', *, mip_gap=0.002, time_limit=None, stream_solver_output=False)
+   Generate a default solver configuration dictionary with standard SDOM settings.
+
+   Parameters
+   ----------
+   solver_name : str, optional
+      Solver to use. Supported values are 'cbc', 'highs', and 'xpress'.
+   time_limit : float, optional
+      Maximum solve time in seconds. Default is None (no limit).
+   stream_solver_output : bool, optional
+      Whether to stream solver native output live to stdout via ``tee``.
+
+   Returns
+   -------
+   dict
+      Configuration dictionary with solver name, executable path, solver
+      options, and solve keywords.
+```
+
+```text
+Help on function run_solver in module sdom.optimization_main:
+
+run_solver(model, solver_config_dict: dict, case_name: str = 'run') -> sdom.results.OptimizationResults
+   Solve the optimization model and return structured results.
+
+   Parameters
+   ----------
+   model : pyomo.core.base.PyomoModel.ConcreteModel
+      The Pyomo optimization model to be solved.
+   solver_config_dict : dict
+      Solver configuration dictionary from get_default_solver_config_dict().
+   case_name : str, optional
+      Case identifier for labeling results. Defaults to "run".
+
+   Returns
+   -------
+   OptimizationResults
+      A dataclass containing termination condition, total cost, generation,
+      storage, summary, capacity, cost breakdown, and problem information.
+```
+
+```text
+Help on function export_results in module sdom.io_manager:
+
+export_results(results, case: str, output_dir: str = './results_pyomo/')
+   Export optimization results to CSV files.
+
+   Output Files
+   ------------
+   OutputGeneration_{case}.csv
+   OutputStorage_{case}.csv
+   OutputSummary_{case}.csv
+   OutputThermalGeneration_{case}.csv
+```
+
+```text
+Help on function plot_results in module sdom.analytic_tools._single:
+
+plot_results(result: "'OptimizationResults'", output_dir: 'Optional[str]' = None, plots_dir: 'Optional[str]' = None) -> 'None'
+   Generate and save all standard plots for a single SDOM optimization run.
+
+   Figures saved
+   -------------
+   - ``capacity_donut.png``
+   - ``capacity_generation_donuts.png``
+   - ``heatmap_{col}.png``
+```
 
 ## Expected outputs
 

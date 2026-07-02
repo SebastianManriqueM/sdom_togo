@@ -149,6 +149,59 @@ training/2_sdom_inputs/
 
 See [training/2_sdom_inputs/explore_data.py](explore_data.py).
 
+## Inspect `load_data` help from Python
+
+This module introduces `sdom.load_data`, the function that reads an SDOM input
+folder into the Python data dictionary used by later modules. Use Python's
+built-in `help()` function to inspect its signature and docstring.
+
+Run this from the repository root with the virtual environment active:
+
+```powershell
+python -c "from sdom import load_data; help(load_data)"
+```
+
+Or use an interactive Python session:
+
+```python
+from sdom import load_data
+help(load_data)
+```
+
+Expected output from this environment:
+
+```text
+Help on function load_data in module sdom.io_manager:
+
+load_data(input_data_dir: str = '.\\Data\\')
+   Load all required SDOM input datasets from CSV files in the specified directory.
+
+   Reads and validates all input CSV files needed for SDOM optimization including
+   VRE data, fixed generation profiles, storage characteristics, thermal units,
+   scalars, and formulation specifications. Performs data consistency checks and
+   filters datasets based on completeness.
+
+   Args:
+      input_data_dir (str, optional): Path to directory containing input CSV files.
+         Defaults to '.\Data\'. Should contain all required files defined in
+         constants.INPUT_CSV_NAMES.
+
+   Returns:
+      dict: Dictionary containing loaded and processed data with keys:
+         - 'formulations' (pd.DataFrame): Component formulation specifications
+         - 'solar_plants', 'wind_plants' (list): Plant IDs for VRE technologies
+         - 'cf_solar', 'cf_wind' (pd.DataFrame): Hourly capacity factors
+         - 'cap_solar', 'cap_wind' (pd.DataFrame): Plant CAPEX and capacity data
+         - 'load_data' (pd.DataFrame): Hourly electricity demand
+         - 'storage_data' (pd.DataFrame): Storage technology characteristics
+         - 'thermal_data' (pd.DataFrame): Thermal balancing unit parameters
+         - 'scalars' (pd.DataFrame): System-level scalar parameters
+
+   Raises:
+      FileNotFoundError: If any required input file is missing from input_data_dir.
+      ValueError: If formulation specifications are invalid.
+```
+
 ## Expected outputs
 
 - A compact inventory of the loaded SDOM data dictionary.
