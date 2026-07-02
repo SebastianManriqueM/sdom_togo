@@ -1,0 +1,52 @@
+Loaded SDOM dictionary keys:
+  - STORAGE_SET_B_TECHS
+  - STORAGE_SET_J_TECHS
+  - areas
+  - cap_solar
+  - cap_wind
+  - cf_solar
+  - cf_wind
+  - formulations
+  - large_hydro_data
+  - line_cap_ft
+  - line_cap_tf
+  - lines
+  - load_data
+  - nuclear_data
+  - other_renewables_data
+  - per_area_balancing_units
+  - per_area_capacity_factors_pv
+  - per_area_capacity_factors_wind
+  - per_area_demand
+  - per_area_exports
+  - per_area_hydro
+  - per_area_imports
+  - per_area_nuclear
+  - per_area_other_renewables
+  - per_area_pv_plants
+  - per_area_storage
+  - per_area_wind_plants
+  - scalars
+  - solar_plants
+  - storage_data
+  - thermal_data
+  - wind_plants
+
+Key table overview:
+- scalars: shape=(8, 1)
+- formulations: shape=(4, 3)
+- storage_data: shape=(12, 4)
+- load_data: shape=(8760, 2)
+- cf_solar: shape=(8760, 101)
+- cf_wind: shape=(8760, 101)
+
+Selected scalar values:
+- GenMix_Target: 1.0
+- r: 0.06
+- EUE_max: 0.0
+
+Active formulations:
+- 0: NoRampsDispatchFormulation
+- 1: RunOfRiverFormulation
+- 2: NotModel
+- 3: NotModel
