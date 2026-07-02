@@ -49,6 +49,7 @@ something that will help future runs.
 
 <!-- Add dated bullets below. Newest on top. -->
 
+- 2026-07-02: Training module readmes now use module-suffixed filenames (`README_m1.md` to `README_m5.md`) instead of plain `README.md`.
 - 2026-07-02: Training module READMEs (2-5) now include explicit module suffix notes (`m2`-`m5`), and modules 3-5 document that `N_HOURS` is didactic while real studies should use 8760 hours.
 - 2026-07-02: Training execution scripts in modules 3–5 now follow `run_mx.py` naming (`run_m3.py`, `run_m4.py`, `run_m5.py`) instead of plain `run.py`.
 - 2026-07-02: Cancelling active `ParametricStudy.run()` workers on Windows can surface `concurrent.futures.process.BrokenProcessPool` in remaining cases; this is expected during forced stop, and SDOM may still write `parametric_summary.csv`, partial case outputs, and runtime CSV entries.
