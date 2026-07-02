@@ -1,0 +1,106 @@
+Metric,Technology,Run,Optimal Value,Unit
+Total cost,,1,10732674595.74741,$US
+Capacity,Thermal,1,4897.0,MW
+Capacity,Solar PV,1,78654.26675543733,MW
+Capacity,Wind,1,18691.926793311657,MW
+Capacity,All,1,102243.193548749,MW
+Charge power capacity,Li-Ion,1,0.0,MW
+Charge power capacity,CAES,1,518.1834988170971,MW
+Charge power capacity,PHS,1,27705.863101787352,MW
+Charge power capacity,H2,1,1487.7545156612734,MW
+Charge power capacity,All,1,29711.801116265724,MW
+Discharge power capacity,Li-Ion,1,0.0,MW
+Discharge power capacity,CAES,1,262.0474680858012,MW
+Discharge power capacity,PHS,1,27705.863101787352,MW
+Discharge power capacity,H2,1,684.3605449594642,MW
+Discharge power capacity,All,1,28652.271114832616,MW
+Average power capacity,Li-Ion,1,0.0,MW
+Average power capacity,CAES,1,390.1154834514491,MW
+Average power capacity,PHS,1,27705.863101787352,MW
+Average power capacity,H2,1,1086.0575303103687,MW
+Average power capacity,All,1,29182.03611554917,MW
+Energy capacity,Li-Ion,1,-0.0,MWh
+Energy capacity,CAES,1,3295.9207984278028,MWh
+Energy capacity,PHS,1,375966.8498183711,MWh
+Energy capacity,H2,1,1031712.3404334956,MWh
+Energy capacity,All,1,1410975.1110502945,MWh
+Duration,Li-Ion,1,-0.0,h
+Duration,CAES,1,10.0,h
+Duration,PHS,1,12.0,h
+Duration,H2,1,1000.0000000000001,h
+Total generation,Thermal,1,1482408.130484794,MWh
+Total generation,Solar PV,1,4200928.145512185,MWh
+Total generation,Wind,1,2784389.968877168,MWh
+Total generation,Other renewables,1,572625.91629,MWh
+Total generation,Hydro,1,671257.99049,MWh
+Total generation,Nuclear,1,761513.67135,MWh
+Total generation,Li-Ion,1,0.0,MWh
+Total generation,CAES,1,12913.843701340236,MWh
+Total generation,PHS,1,2023802.0435121704,MWh
+Total generation,H2,1,99142.08972660734,MWh
+Total generation,All,1,12608981.799944267,MWh
+Total Imports/Exports,Imports,1,0.0,MWh
+Total Imports/Exports,Exports,1,0.0,MWh
+Storage energy discharging,Li-Ion,1,0.0,MWh
+Storage energy discharging,CAES,1,12913.843701340236,MWh
+Storage energy discharging,PHS,1,2023802.0435121704,MWh
+Storage energy discharging,H2,1,99142.08972660734,MWh
+Storage energy discharging,All,1,2135857.9769401182,MWh
+Total demand,demand,1,9775247.62111,MWh
+Storage energy charging,Li-Ion,1,0.0,MWh
+Storage energy charging,CAES,1,20429.09480856823,MWh
+Storage energy charging,PHS,1,2587982.1528288624,MWh
+Storage energy charging,H2,1,225322.93119683428,MWh
+Storage energy charging,All,1,2833734.178834265,MWh
+CAPEX,Solar PV,1,4135479386.1818676,$US
+CAPEX,Wind,1,1455829579.0778458,$US
+CAPEX,Thermal,1,0.0,$US
+CAPEX,All,1,5591308965.259713,$US
+Power-CAPEX,Li-Ion,1,0.0,$US
+Power-CAPEX,CAES,1,21137427.94902118,$US
+Power-CAPEX,PHS,1,1842351345.8308988,$US
+Power-CAPEX,H2,1,140865049.1847374,$US
+Power-CAPEX,All,1,2004353822.9646573,$US
+Energy-CAPEX,Li-Ion,1,-0.0,$US
+Energy-CAPEX,CAES,1,8299165.722868067,$US
+Energy-CAPEX,PHS,1,1248948150.491967,$US
+Energy-CAPEX,H2,1,103861067.04287638,$US
+Energy-CAPEX,All,1,1361108383.2577114,$US
+Total-CAPEX,Li-Ion,1,0.0,$US
+Total-CAPEX,CAES,1,29436593.671889246,$US
+Total-CAPEX,PHS,1,3091299496.3228655,$US
+Total-CAPEX,H2,1,244726116.2276138,$US
+Total-CAPEX,All,1,3365462206.2223687,$US
+FOM,Thermal,1,0.0,$US
+FOM,Solar PV,1,652679397.8779594,$US
+FOM,Wind,1,637519378.8036388,$US
+FOM,Li-Ion,1,0.0,$US
+FOM,CAES,1,1422850.3236709193,$US
+FOM,PHS,1,228336208.40159437,$US
+FOM,H2,1,51085662.19764514,$US
+FOM,All,1,1571043497.6045086,$US
+VOM,Thermal,1,11118060.978635956,$US
+VOM,Li-Ion,1,0.0,$US
+VOM,CAES,1,53214.334016986744,$US
+VOM,PHS,1,2084880.3891853679,$US
+VOM,H2,1,0.0,$US
+VOM,All,1,13256155.70183831,$US
+Fuel-Cost,Thermal,1,191603770.95898145,$US
+OPEX,Thermal,1,11118060.978635956,$US
+OPEX,Solar PV,1,652679397.8779594,$US
+OPEX,Wind,1,637519378.8036388,$US
+OPEX,Li-Ion,1,0.0,$US
+OPEX,CAES,1,1476064.657687906,$US
+OPEX,PHS,1,230421088.79077974,$US
+OPEX,H2,1,51085662.19764514,$US
+OPEX,All,1,1584299653.306347,$US
+Cost,Imports Cost,1,0.0,$US
+Revenue,Exports Revenue,1,0.0,$US
+Equivalent number of cycles,Li-Ion,1,0.0,-
+Equivalent number of cycles,CAES,1,3.9181292546533,-
+Equivalent number of cycles,PHS,1,5.3829268311551015,-
+Equivalent number of cycles,H2,1,0.0960947018283708,-
+Total VRE curtailment,Solar PV,1,92068.84065347313,MWh
+Total VRE curtailment,Wind,1,552.856920395081,MWh
+Total VRE curtailment,All,1,92621.69757386821,MWh
+VRE curtailment percentage,All,1,1.3085968521139142,%

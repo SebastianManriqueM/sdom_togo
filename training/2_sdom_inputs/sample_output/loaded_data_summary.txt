@@ -37,8 +37,8 @@ Key table overview:
 - formulations: shape=(4, 3)
 - storage_data: shape=(12, 4)
 - load_data: shape=(8760, 2)
-- cf_solar: shape=(8760, 101)
-- cf_wind: shape=(8760, 101)
+- cf_solar: shape=(8760, 20)
+- cf_wind: shape=(8760, 98)
 
 Selected scalar values:
 - GenMix_Target: 0.0

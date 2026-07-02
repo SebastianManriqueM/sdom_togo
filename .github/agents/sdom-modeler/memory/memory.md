@@ -49,6 +49,7 @@ something that will help future runs.
 
 <!-- Add dated bullets below. Newest on top. -->
 
+- 2026-07-02: Module 4 and 5 scripts now explain the meaning of parametric vectors (`GENMIX_VALUES`, `STORAGE_P_CAPEX_FACTORS`, `LOAD_SCALE_FACTORS`) directly beside the constants.
 - 2026-07-02: Module 2 README (`training/2_sdom_inputs/README_m2.md`) now documents sample-data file naming conventions, column-ID matching rules, storage-data orientation, and the main purpose of every current input file in `data/sample_data/`.
 - 2026-07-02: Training module readmes now use module-suffixed filenames (`README_m1.md` to `README_m5.md`) instead of plain `README.md`.
 - 2026-07-02: Training module READMEs (2-5) now include explicit module suffix notes (`m2`-`m5`), and modules 3-5 document that `N_HOURS` is didactic while real studies should use 8760 hours.

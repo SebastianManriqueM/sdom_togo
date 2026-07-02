@@ -23,7 +23,9 @@ if str(REPO_ROOT) not in sys.path:
 from training.run_time_report import append_run_timing
 
 N_HOURS = 7*24*2
-GENMIX_VALUES = [0.0, 0.3, 0.5]
+# Clean-generation target values to test. 0.0 allows no clean-generation
+# requirement; 1.0 requires all served energy to come from clean resources.
+GENMIX_VALUES = [0.0, 1.0]
 
 logger = logging.getLogger(__name__)
 

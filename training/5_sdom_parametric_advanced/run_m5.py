@@ -24,8 +24,14 @@ if str(REPO_ROOT) not in sys.path:
 from training.run_time_report import append_run_timing
 
 N_HOURS = 7*24*2
-GENMIX_VALUES = [0.0, 0.5]
+# Clean-generation target values to test. 0.0 allows no clean-generation
+# requirement; 1.0 requires all served energy to come from clean resources.
+GENMIX_VALUES = [0.0, 1.0]
+# Multipliers applied to the storage power CAPEX row (P_Capex): values below
+# 1.0 make storage power cheaper, while values above 1.0 make it more expensive.
 STORAGE_P_CAPEX_FACTORS = [0.8, 1.0, 1.2]
+# Multipliers applied to the load time series: values below 1.0 reduce demand,
+# while values above 1.0 increase demand.
 LOAD_SCALE_FACTORS = [0.9, 1.00, 1.1]
 
 logger = logging.getLogger(__name__)
