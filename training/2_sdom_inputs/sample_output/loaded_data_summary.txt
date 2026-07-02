@@ -41,7 +41,7 @@ Key table overview:
 - cf_wind: shape=(8760, 101)
 
 Selected scalar values:
-- GenMix_Target: 1.0
+- GenMix_Target: 0.0
 - r: 0.06
 - EUE_max: 0.0
 

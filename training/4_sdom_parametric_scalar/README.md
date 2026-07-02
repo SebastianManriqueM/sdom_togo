@@ -31,7 +31,7 @@ Reference:
 ```text
 training/4_sdom_parametric_scalar/
 ├── README.md
-└── run.py
+└── run_m4.py
 ```
 
 ## Step-by-step walkthrough
@@ -39,7 +39,7 @@ training/4_sdom_parametric_scalar/
 1. Run:
 
    ```powershell
-   python training/4_sdom_parametric_scalar/run.py
+   python training/4_sdom_parametric_scalar/run_m4.py
    ```
 
 2. Review case-level completion messages and final summary.
@@ -51,7 +51,7 @@ training/4_sdom_parametric_scalar/
 
 ## Full runnable script
 
-See [training/4_sdom_parametric_scalar/run.py](run.py).
+See [training/4_sdom_parametric_scalar/run_m4.py](run_m4.py).
 
 ## Expected outputs
 

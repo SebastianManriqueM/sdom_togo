@@ -33,7 +33,7 @@ Reference:
 ```text
 training/5_sdom_parametric_advanced/
 ├── README.md
-└── run.py
+└── run_m5.py
 ```
 
 ## Step-by-step walkthrough
@@ -41,7 +41,7 @@ training/5_sdom_parametric_advanced/
 1. Run:
 
    ```powershell
-   python training/5_sdom_parametric_advanced/run.py
+   python training/5_sdom_parametric_advanced/run_m5.py
    ```
 
 2. Confirm total cases equals the product of sweep lengths.
@@ -55,7 +55,7 @@ training/5_sdom_parametric_advanced/
 
 ## Full runnable script
 
-See [training/5_sdom_parametric_advanced/run.py](run.py).
+See [training/5_sdom_parametric_advanced/run_m5.py](run_m5.py).
 
 ## Expected outputs
 

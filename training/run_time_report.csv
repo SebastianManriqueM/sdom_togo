@@ -1,0 +1,5 @@
+script,start_time,end_time,duration_seconds,status,details
+C:/Users/smachado/repos/pySDOM/sdom_models/sdom_togo/training/2_sdom_inputs/explore_data.py,2026-07-01T21:09:42,2026-07-01T21:09:43,0.15,success,
+C:/Users/smachado/repos/pySDOM/sdom_models/sdom_togo/training/3_sdom_single_run/run.py,2026-07-01T21:09:50,2026-07-02T05:31:01,30071.16,success,
+C:/Users/smachado/repos/pySDOM/sdom_models/sdom_togo/training/4_sdom_parametric_scalar/run.py,2026-07-01T21:10:12,2026-07-02T07:07:47,35855.14,success,
+C:/Users/smachado/repos/pySDOM/sdom_models/sdom_togo/training/5_sdom_parametric_advanced/run.py,2026-07-01T21:10:35,2026-07-02T07:08:22,35866.75,success,

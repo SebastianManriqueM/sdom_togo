@@ -7,9 +7,17 @@ Run from repository root:
 from __future__ import annotations
 
 import logging
+import sys
+from datetime import datetime
 from pathlib import Path
 
 from sdom import load_data
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from training.run_time_report import append_run_timing
 
 
 logger = logging.getLogger(__name__)
@@ -89,4 +97,20 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    started_at = datetime.now()
+    run_status = "success"
+    run_details = ""
+    try:
+        main()
+    except Exception as exc:  # noqa: BLE001
+        run_status = "error"
+        run_details = f"{type(exc).__name__}: {exc}"
+        raise
+    finally:
+        append_run_timing(
+            script_path=Path(__file__).resolve(),
+            start_time=started_at,
+            end_time=datetime.now(),
+            status=run_status,
+            details=run_details,
+        )

@@ -31,7 +31,7 @@ Reference:
 ```text
 training/3_sdom_single_run/
 ├── README.md
-└── run.py
+└── run_m3.py
 ```
 
 ## Step-by-step walkthrough
@@ -39,7 +39,7 @@ training/3_sdom_single_run/
 1. Run the script:
 
    ```powershell
-   python training/3_sdom_single_run/run.py
+   python training/3_sdom_single_run/run_m3.py
    ```
 
 2. Inspect terminal output for:
@@ -54,7 +54,7 @@ training/3_sdom_single_run/
 
 ## Full runnable script
 
-See [training/3_sdom_single_run/run.py](run.py).
+See [training/3_sdom_single_run/run_m3.py](run_m3.py).
 
 ## Expected outputs
 
