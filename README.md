@@ -39,6 +39,5 @@ This repository includes the following training modules under `training/`:
 
 ## Acknowledgements
 
-This effort was funded by the Rockefeller Foundation. We also gratefully
-acknowledge the Ministère délégué chargé de l'énergie et des ressources
+We also gratefully acknowledge the Ministère délégué chargé de l'énergie et des ressources
 minières (MDERM) of Togo for hosting and helping coordinate the workshop.
