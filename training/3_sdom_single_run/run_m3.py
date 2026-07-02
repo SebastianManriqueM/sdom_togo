@@ -26,7 +26,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from training.run_time_report import append_run_timing
 
-N_HOURS = 740
+N_HOURS = 7*24*2
 CASE_NAME = "training_single_740"
 
 logger = logging.getLogger(__name__)

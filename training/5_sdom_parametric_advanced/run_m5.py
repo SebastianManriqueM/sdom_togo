@@ -23,7 +23,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from training.run_time_report import append_run_timing
 
-N_HOURS = 740
+N_HOURS = 7*24*2
 GENMIX_VALUES = [0.0, 0.5]
 STORAGE_P_CAPEX_FACTORS = [0.8, 1.0, 1.2]
 LOAD_SCALE_FACTORS = [0.9, 1.00, 1.1]

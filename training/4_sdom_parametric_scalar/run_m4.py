@@ -22,7 +22,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from training.run_time_report import append_run_timing
 
-N_HOURS = 740
+N_HOURS = 7*24*2
 GENMIX_VALUES = [0.0, 0.3, 0.5]
 
 logger = logging.getLogger(__name__)
