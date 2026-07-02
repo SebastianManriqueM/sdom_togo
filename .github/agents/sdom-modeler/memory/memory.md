@@ -49,6 +49,7 @@ something that will help future runs.
 
 <!-- Add dated bullets below. Newest on top. -->
 
+- 2026-07-02: SDOM `plot_parametric_results` sensitivity stacked-bar PNGs may omit the intended technology legend; issue details and reproduction notes are documented in `references/sdom_parametric_sensitivity_legend_issue.md`.
 - 2026-07-02: Module 5 advanced parametric rerun (`training/5_sdom_parametric_advanced/run_m5.py`) completed 18/18 optimal cases with `N_HOURS = 7*24*2` in 3774.19 seconds, writing summaries and plots under `training/5_sdom_parametric_advanced/sample_output/`.
 - 2026-07-02: Module 4 and 5 scripts now explain the meaning of parametric vectors (`GENMIX_VALUES`, `STORAGE_P_CAPEX_FACTORS`, `LOAD_SCALE_FACTORS`) directly beside the constants.
 - 2026-07-02: Module 2 README (`training/2_sdom_inputs/README_m2.md`) now documents sample-data file naming conventions, column-ID matching rules, storage-data orientation, and the main purpose of every current input file in `data/sample_data/`.
