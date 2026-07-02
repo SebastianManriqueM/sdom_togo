@@ -1,7 +1,7 @@
 """Module 3: single SDOM run with exports and default plots.
 
 Run from repository root:
-    python training/3_sdom_single_run/run.py
+    python training/3_sdom_single_run/run_m3.py
 """
 
 from __future__ import annotations

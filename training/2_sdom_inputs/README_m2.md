@@ -14,7 +14,7 @@ Python dictionary produced by `load_data` using the sample scenario.
 
 ## Prerequisites
 
-- You completed module 1: [training/1_sdom_install/README.md](../1_sdom_install/README.md).
+- You completed module 1: [training/1_sdom_install/README_m1.md](../1_sdom_install/README_m1.md).
 - Your virtual environment is active and SDOM is installed.
 
 ## Inputs and scenario used
@@ -34,9 +34,15 @@ Reference:
 
 ```text
 training/2_sdom_inputs/
-├── README.md
+├── README_m2.md
 └── explore_data.py
 ```
+
+## Module suffix and script naming
+
+- Module suffix: `m2`
+- Script naming note: this data-exploration module keeps `explore_data.py`
+   (the `run_mx.py` naming is used in simulation modules).
 
 ## Step-by-step walkthrough
 

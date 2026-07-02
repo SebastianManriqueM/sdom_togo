@@ -8,7 +8,7 @@ generates default plots, and explores key fields of `OptimizationResults`.
 ## Learning objectives
 
 - Build and solve an SDOM model using the public API.
-- Use `n_hours=1440` for a practical training horizon.
+- Use `N_HOURS=740` for a practical training horizon in this module.
 - Check solve success before post-processing.
 - Export CSV outputs and generate default plots.
 
@@ -20,7 +20,7 @@ generates default plots, and explores key fields of `OptimizationResults`.
 ## Inputs and scenario used
 
 - Scenario folder: `data/sample_data/`
-- Time horizon: 1440 time steps
+- Time horizon in this training script: 740 time steps
 - Solver: HiGHS (`solver_name="highs"`)
 
 Reference:
@@ -30,9 +30,39 @@ Reference:
 
 ```text
 training/3_sdom_single_run/
-├── README.md
+├── README_m3.md
 └── run_m3.py
 ```
+
+## Module suffix and script naming
+
+- Module suffix: `m3`
+- Script file: `run_m3.py`
+
+## Computational burden and practical simplifications
+
+One key SDOM advantage is that it can co-optimize both storage power capacity
+(MW) and storage duration (energy-to-power relationship). SDOM represents
+storage investment with separate power and energy CAPEX terms (`P_Capex` and
+`E_Capex`), which improves realism but also increases model complexity.
+
+When many storage technologies are available (with different CAPEX structures
+and efficiencies), the optimization can become computationally heavy and harder
+to solve.
+
+To reduce computational burden, users can:
+
+- Fix duration for selected technologies by setting
+   `Min_Duration = Max_Duration` in `data/sample_data/StorageData_2050.csv`.
+- Reduce the number of storage technologies included in
+   `data/sample_data/StorageData_2050.csv`.
+- Use a combination of both approaches.
+
+## Note on `N_HOURS` in training scripts
+
+`N_HOURS` in the training scripts is a didactic setting to produce lighter
+models and faster results. For real planning studies, runs should use a full
+year horizon (`8760` hours).
 
 ## Step-by-step walkthrough
 

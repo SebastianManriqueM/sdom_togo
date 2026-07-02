@@ -21,7 +21,7 @@ This module performs a simple parametric study by sweeping the scalar
 
 - Scenario folder: `data/sample_data/`
 - Swept scalar: `scalars -> GenMix_Target`
-- Time horizon: 1440 time steps
+- Time horizon in this training script: 740 time steps
 
 Reference:
 - Parametric analysis: <https://natlabrockies.github.io/SDOM/user_guide/parametric_analysis.html>
@@ -30,9 +30,19 @@ Reference:
 
 ```text
 training/4_sdom_parametric_scalar/
-├── README.md
+├── README_m4.md
 └── run_m4.py
 ```
+
+## Module suffix and script naming
+
+- Module suffix: `m4`
+- Script file: `run_m4.py`
+
+## Note on `N_HOURS` in training scripts
+
+`N_HOURS` is used here as a didactic setting for faster turnaround. Real
+planning runs should use a complete year (`8760` hours).
 
 ## Step-by-step walkthrough
 

@@ -1,7 +1,7 @@
 """Module 4: simple parametric study with scalar sweep.
 
 Run from repository root:
-    python training/4_sdom_parametric_scalar/run.py
+    python training/4_sdom_parametric_scalar/run_m4.py
 """
 
 from __future__ import annotations

@@ -1,7 +1,7 @@
 """Module 5: advanced parametric study with three sweep dimensions.
 
 Run from repository root:
-    python training/5_sdom_parametric_advanced/run.py
+    python training/5_sdom_parametric_advanced/run_m5.py
 """
 
 from __future__ import annotations

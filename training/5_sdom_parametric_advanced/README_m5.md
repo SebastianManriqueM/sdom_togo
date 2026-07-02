@@ -9,7 +9,7 @@ sweep types: scalar target, storage cost factor, and load time-series scaling.
 
 - Combine multiple sweep dimensions in one `ParametricStudy`.
 - Understand Cartesian case expansion and runtime implications.
-- Use 1440 time steps for practical training run time.
+- Use 740 time steps for practical training run time.
 - Generate comparative plots and a compact case summary table.
 
 ## Prerequisites
@@ -23,7 +23,7 @@ sweep types: scalar target, storage cost factor, and load time-series scaling.
 - Scalar sweep: `GenMix_Target`
 - Storage factor sweep: `P_Capex` row in storage data
 - Time-series sweep: `load_data` (`Load` column)
-- Time horizon: 1440 time steps
+- Time horizon in this training script: 740 time steps
 
 Reference:
 - Parametric analysis user guide: <https://natlabrockies.github.io/SDOM/user_guide/parametric_analysis.html>
@@ -32,9 +32,19 @@ Reference:
 
 ```text
 training/5_sdom_parametric_advanced/
-├── README.md
+├── README_m5.md
 └── run_m5.py
 ```
+
+## Module suffix and script naming
+
+- Module suffix: `m5`
+- Script file: `run_m5.py`
+
+## Note on `N_HOURS` in training scripts
+
+`N_HOURS` in this module is a didactic value to keep examples lighter and
+faster. Real planning runs should use the full year (`8760` hours).
 
 ## Step-by-step walkthrough
 
