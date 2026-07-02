@@ -21,14 +21,101 @@ Python dictionary produced by `load_data` using the sample scenario.
 
 - Scenario folder: `data/sample_data/`
 - Key files used in this module:
+   - `CapSolar_2050.csv`, `CapWind_2050.csv`
+   - `CFSolar_2050.csv`, `CFWind_2050.csv`
+   - `Data_BalancingUnits_2030(in).csv`
   - `formulations.csv`
-  - `scalars.csv`
-  - `StorageData_2050.csv`
+   - `lahy_hourly_2019.csv`
   - `Load_hourly_2050.csv`
-  - `CFSolar_2050.csv`, `CFWind_2050.csv`
+   - `Nucl_hourly_2019.csv`
+   - `otre_hourly_2019.csv`
+   - `scalars.csv`
+   - `StorageData_2050.csv`
 
 Reference:
 - SDOM input data guide: <https://natlabrockies.github.io/SDOM/user_guide/inputs.html>
+
+## Input file naming and column conventions
+
+SDOM scenarios are folders of CSV files read by `load_data`. The expected file
+types and shapes are documented in the SDOM input data guide:
+<https://natlabrockies.github.io/SDOM/user_guide/inputs.html>.
+
+In `data/sample_data/`, several files include a year suffix such as `_2050` or
+`_2030(in)`. These suffixes are scenario labels. They can be changed when you
+create a new scenario, but the file role must remain recognizable to SDOM and to
+the training scripts. For example, if a script expects `CFSolar_2050.csv`, then
+renaming it to `CFSolar_Togo2050.csv` also requires updating the script or the
+data-loading convention that maps file names to SDOM input tables.
+
+The stable part of each name communicates the input role:
+
+- `CapSolar_*` and `CapWind_*`: candidate renewable sites and investment data.
+- `CFSolar_*` and `CFWind_*`: hourly capacity factors for those candidate sites.
+- `StorageData_*`: storage technology costs and technical parameters.
+- `Load_hourly_*`: hourly demand profile.
+- `formulations.csv`: active model formulation choices.
+- `scalars.csv`: global scalar parameters such as `GenMix_Target`.
+
+Column names matter because SDOM uses them to connect tables. In hourly capacity
+factor files, the first column is the time index (`Hour`), and each remaining
+column is a site ID. Those site IDs must match the `sc_gid` values in the
+corresponding capacity file. For example:
+
+- Columns in `data/sample_data/CFSolar_2050.csv` include solar site IDs such as
+   `132876` and `132875`.
+- Those same IDs must appear in the `sc_gid` column of
+   `data/sample_data/CapSolar_2050.csv`.
+- The same rule applies to `CFWind_2050.csv` and `CapWind_2050.csv`.
+
+Storage data uses the opposite orientation: technologies are columns and
+parameters are rows. For example, in `data/sample_data/StorageData_2050.csv`,
+columns such as `Li-Ion`, `CAES`, `PHS`, and `H2` are storage technologies,
+while rows such as `P_Capex`, `E_Capex`, `Eff`, `Min_Duration`, and
+`Max_Duration` define their costs and technical limits.
+
+Examples of safe edits:
+
+- Updating numeric values in `P_Capex`, `E_Capex`, `Eff`, `Min_Duration`, or
+   `Max_Duration` for an existing storage technology.
+- Adding a new solar candidate if the same ID is added consistently to both
+   `CapSolar_2050.csv` (`sc_gid`) and `CFSolar_2050.csv` (capacity-factor
+   column).
+- Changing a scenario suffix such as `_2050` only after updating any scripts or
+   documentation that reference the original file name.
+
+Examples of risky edits:
+
+- Renaming `sc_gid`, `capacity`, `latitude`, or `longitude` columns in capacity
+   files without updating SDOM's input parsing expectations.
+- Adding a capacity-factor column whose ID does not exist in the matching
+   capacity file.
+- Removing rows such as `P_Capex` or `E_Capex` from `StorageData_2050.csv` when
+   storage investment is active.
+
+## Main input files in `data/sample_data/`
+
+The table below lists every input file currently present in
+`data/sample_data/`.
+
+| File | Main purpose | Key naming / column notes |
+| --- | --- | --- |
+| `formulations.csv` | Selects which model formulations are active, such as thermal, hydro, imports, or exports. | `Component` and `Formulation` values determine which input files SDOM expects. |
+| `scalars.csv` | Stores scalar model parameters, for example `GenMix_Target`, `r`, and `EUE_max`. | Keep parameter names stable; scripts and sweeps may reference them directly. |
+| `StorageData_2050.csv` | Contains CAPEX costs and technical parameters for storage technologies. | Technology names are columns; rows include `P_Capex`, `E_Capex`, `Eff`, `Min_Duration`, and `Max_Duration`. |
+| `Load_hourly_2050.csv` | Contains the hourly demand profile. | Uses a time index column and a `Load` column. Full planning runs should use 8760 hours. |
+| `CapSolar_2050.csv` | Contains solar candidate-site data such as CAPEX components, maximum capacity, and latitude/longitude. | `sc_gid` identifies each site; these IDs must match columns in `CFSolar_2050.csv`. |
+| `CFSolar_2050.csv` | Contains hourly capacity factors for candidate solar sites. | Column names after `Hour` must match `sc_gid` values in `CapSolar_2050.csv`. |
+| `CapWind_2050.csv` | Contains wind candidate-site data such as CAPEX components, maximum capacity, and latitude/longitude. | `sc_gid` identifies each site; these IDs must match columns in `CFWind_2050.csv`. |
+| `CFWind_2050.csv` | Contains hourly capacity factors for candidate wind sites. | Column names after `Hour` must match `sc_gid` values in `CapWind_2050.csv`. |
+| `Data_BalancingUnits_2030(in).csv` | Contains thermal balancing-unit parameters such as capacity bounds, lifetime, CAPEX, heat rate, and fuel cost. | `Plant_id` identifies each thermal unit; cost and technical columns should keep their expected names. |
+| `Nucl_hourly_2019.csv` | Contains nuclear generation or availability time-series data when nuclear is active. | Hourly columns should keep the expected time-series structure from the SDOM input guide. |
+| `lahy_hourly_2019.csv` | Contains large-hydro hourly profile data. | Used with hydro formulations; keep time indexing consistent with other hourly files. |
+| `otre_hourly_2019.csv` | Contains other-renewables hourly profile data. | Used when other-renewables data is represented as an exogenous profile. |
+
+For more detail on required files, hourly structure, and validation, see the
+SDOM input documentation:
+<https://natlabrockies.github.io/SDOM/user_guide/inputs.html#required-files>.
 
 ## Project/file structure for this module
 
